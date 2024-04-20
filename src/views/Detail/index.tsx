@@ -12,25 +12,6 @@ interface MovieData {
     poster_path: string;
     overview: string;
     release_date: string;
-    // info: string;
-    // url: string
-    // images: {
-    //     url: string;
-    // }[];
-    // dates: {
-    //     start: {
-    //         dateTime: any
-    //     };
-    // };
-    // seatmap: {
-    //     staticUrl: string;
-    // };
-    // pleaseNote: string;
-    // priceRanges: {
-    //     min: string;
-    //     max: string;
-    //     currency: string;
-    // }[];
 }
 
 const Detail = () => {
@@ -43,7 +24,7 @@ const Detail = () => {
     useEffect(() => {
         const fetchMoviesData = async () => {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${import.meta.env.VITE_THEMOVIEDB_API_KEY}`)
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${import.meta.env.VITE_THEMOVIEDB_API_KEY}&language=es-ES&include_adult=false`)
                 const data = await response.json()
                 console.log('data from Detail', data);
                 setMovieData(data)
@@ -64,6 +45,10 @@ const Detail = () => {
         return <div>Ha ocurrido un error</div>;
     }
 
+    const formattedDate = movieData?.release_date 
+    ? format(new Date(movieData.release_date + 'T00:00:00Z'), "dd/MM/yyyy", { locale: es })
+    : '';
+
     return (
         <>
             <Navbar />
@@ -72,16 +57,8 @@ const Detail = () => {
                     <img src={`https://image.tmdb.org/t/p/original${movieData?.backdrop_path}`} alt={movieData?.title} className={styles.movieImage} />
                     <h1 className={styles.movieName}>{movieData?.title}</h1>
                     <p className={styles.infoParagraph}>{movieData?.overview}</p>
-                    {movieData?.release_date ? <p className={styles.dateParagraph}>{format(new Date(movieData?.release_date), "d/MM/yyyy", {locale: es})}</p> : '' }
+                    <p className={styles.dateParagraph}>{formattedDate}</p>
                 </div>
-                {/* <div className={styles.seatInfoContainer}>
-                    <img src={movieData?.seatmap?.staticUrl} alt="Seatmap" />
-                    <p className={styles.pleaseNoteLegend}>{movieData?.pleaseNote}</p>
-                    <p className={styles.priceRangeLegend}>Rango de precios: {movieData?.priceRanges?.[0].min}-{movieData?.priceRanges?.[0].max} {movieData?.priceRanges?.[0].currency}</p>
-                </div>
-                <a href={movieData?.url}>
-                    Ir por tus boletos
-                </a> */}
             </div>
         </>
   

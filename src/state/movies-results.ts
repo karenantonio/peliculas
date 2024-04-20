@@ -4,7 +4,7 @@ interface MoviesResults {
     data: any;
     error: Error | null;
     isLoading: boolean;
-    fetchMovies: (params?: string) => Promise<void>;
+    fetchMovies: (searchTerm?: string, page?: number) => Promise<void>;
 }
 
 // * store pra guardar valores de manera global
@@ -12,12 +12,25 @@ const useMoviesResults = create<MoviesResults>((set) => ({
     data: [],
     error: null,
     isLoading: false,
-    fetchMovies: async (params?: string) => {
+    fetchMovies: async (searchTerm?: string, page?: number) => {
         try {
-            console.log('params useMoviesResults',params);
-            let url = (params) ? 'https://api.themoviedb.org/3/search/movie' : 'https://api.themoviedb.org/3/trending/movie/day'
+            
+            let url = searchTerm ? 'https://api.themoviedb.org/3/search/movie' : 'https://api.themoviedb.org/3/trending/movie/day';
+
+            let params = '';
+            if (searchTerm) {
+                params += `&query=${searchTerm}`;
+            }
+            if (page) {
+                params += `&page=${page+1}`;
+            }
+
             await set(() => ({ isLoading: true }))
-            const response = await fetch(`${url}?api_key=${import.meta.env.VITE_THEMOVIEDB_API_KEY}&language=es-ES${params?.length ? params : ''}`)
+
+            console.log(`${url}?api_key=${import.meta.env.VITE_THEMOVIEDB_API_KEY}&language=es-ES${params}`);
+
+            const response = await fetch(`${url}?api_key=${import.meta.env.VITE_THEMOVIEDB_API_KEY}&include_adult=false&language=es-ES${params}`);
+            
             const data = await response.json()
 
             await set(() => ({ data, isLoading: false }))

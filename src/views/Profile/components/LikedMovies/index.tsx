@@ -24,7 +24,7 @@ const LikedMovies = () => {
 
                 const results = []
                 for(const movieId of likedMovies) {
-                    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${import.meta.env.VITE_THEMOVIEDB_API_KEY}`)
+                    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${import.meta.env.VITE_THEMOVIEDB_API_KEY}&language=es-ES&include_adult=false`)
                     const data = await response.json()
                     results.push(data)
                 }

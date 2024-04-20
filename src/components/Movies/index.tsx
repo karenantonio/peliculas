@@ -16,12 +16,8 @@ const Movies = ({ searchTerm, movies }: Props) => {
     }
 
     const renderMovies = () => {
-        let moviesFiltered = movies
 
-        if (searchTerm.length > 0) {
-            moviesFiltered = moviesFiltered.filter((item: { title: string }) => item.title.toLocaleLowerCase().includes(searchTerm))
-        }
-        return moviesFiltered.map((movieItem: { id: number; title: string; overview: string | undefined; poster_path: string | undefined}) => (
+        return movies.map((movieItem: { id: number; title: string; overview: string | undefined; poster_path: string | undefined}) => (
             <MovieItem 
                 key={`movie-item-${movieItem.id}`}
                 id={movieItem.id} 

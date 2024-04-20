@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Navbar from '../../components/Navbar'
 import Movies from '../../components/Movies'
 import ReactPaginate from 'react-paginate'
@@ -9,10 +9,10 @@ const Home = () => {
 
 	const [search, setSearch] = useState('')
 	const [searchTerm, setSearchTerm] = useState('')
+	const [currentPage, setCurrentPage] = useState(0);
 	const { data, isLoading, error, fetchMovies } = useMoviesResults()
 
-	const movies = useMemo(() => data?.results || null, [data?.results])
-	// const page = useMemo(() => data?.page || {}, [data?.page])
+	const movies = data?.results || null
 
 	// Arreglar constante total de paginas, esto es porque la api devuelve 1000 paginas pero en realidad la cantidad es menor
 	let total_pages = data?.total_pages || {};
@@ -34,13 +34,15 @@ const Home = () => {
 	const handleInputKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
 		if (evt.key === 'Enter' && search) {
 			setSearchTerm(search);
-			fetchMovies(`&query=${search}`)
+			setCurrentPage(0);
+			fetchMovies(search)
 		}
 	};
 
 	const handlePageClick = useCallback(({ selected }: { selected: number }) => {
-		fetchMovies(`&query=${searchTerm}&page=${selected}`)
-	}, [searchTerm, fetchMovies]);
+		setCurrentPage(selected);
+		fetchMovies(search, selected); 
+	  }, [search, fetchMovies]);
 
   	const renderMovies = () => {
 		if (isLoading){
@@ -65,6 +67,7 @@ const Home = () => {
 			onPageChange={handlePageClick}
 			pageRangeDisplayed={5}
 			pageCount={total_pages}
+			forcePage={currentPage}
 			previousLabel="<"
 			renderOnZeroPageCount={null}
 			/>
