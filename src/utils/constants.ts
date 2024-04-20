@@ -1,0 +1,1 @@
+export const LIKED_MOVIES_STORAGE_KEY: string = "likedMovies";
