@@ -23,7 +23,7 @@ const Profile = () => {
             <span
                 className={`${pathname.includes('liked-movies') ? styles.activeTab : ''} ${styles.tab}`}
                 onClick={() => handleTabClick('liked-movies')}
-            >Peliculas favoritas</span>
+            >Películas favoritas</span>
         </div>
         <Outlet />
         </>

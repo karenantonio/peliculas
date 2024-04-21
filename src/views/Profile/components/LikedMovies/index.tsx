@@ -55,7 +55,7 @@ const LikedMovies = () => {
     if (isLoading) {
         return (
             <div className="loading centerContent">
-                Cargando peliculas favoritas...
+                Cargando películas favoritas...
             </div>
         )
     }

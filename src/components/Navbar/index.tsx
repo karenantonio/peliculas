@@ -5,7 +5,7 @@ const Navbar = () => {
 
     return (
         <div className={styles.containerNavbar}>
-            <Link to='/' className={styles.linkNavbar}>Peliculas</Link>
+            <Link to='/' className={styles.linkNavbar}>Películas</Link>
             <Link to="/profile/my-info" className={styles.linkNavbar}>Mi perfil</Link>
         </div>
     );
