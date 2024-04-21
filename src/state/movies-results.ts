@@ -27,8 +27,6 @@ const useMoviesResults = create<MoviesResults>((set) => ({
 
             await set(() => ({ isLoading: true }))
 
-            console.log(`${url}?api_key=${import.meta.env.VITE_THEMOVIEDB_API_KEY}&language=es-ES${params}`);
-
             const response = await fetch(`${url}?api_key=${import.meta.env.VITE_THEMOVIEDB_API_KEY}&include_adult=false&language=es-ES${params}`);
             
             const data = await response.json()

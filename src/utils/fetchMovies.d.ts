@@ -10,7 +10,7 @@ declare module "./fetchMovies" {
         // url: string;
     };
 
-    console.log('entra aca');
+    console.log('data from fetchMovies MovieData');
 
     export function fetchMovieDetail(movieId: number): Promise<MovieData>;
     export function fetchData(movieId: number): { movieDetail: Promise<MovieData> };

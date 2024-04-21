@@ -1,10 +1,10 @@
-import { useForm } from "react-hook-form"
-import styles from './MyInfo.module.css'
-import { useEffect } from "react"
-import Input from '../../../../components/common/Input'
+import { useForm } from 'react-hook-form'
+import { useEffect } from 'react'
 import Swal from 'sweetalert2';
-import { yupResolver } from "@hookform/resolvers/yup"
-import * as yup from "yup"
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+import styles from './MyInfo.module.css'
+import Input from '../../../../components/common/Input'
 
 const USER_DATA = 'userData'
 
@@ -17,7 +17,7 @@ const schema = yup.object().shape({
         .required("Este campo es obligatorio")
         .integer("La edad debe ser un número entero")
         .min(0, "La edad debe ser mayor o igual a 0")
-        .max(100, "La edad debe ser menor o igual a 100")
+        .max(120, "La edad debe ser menor o igual a 120")
         .typeError("La edad debe ser un número válido"),
 }).required()
 

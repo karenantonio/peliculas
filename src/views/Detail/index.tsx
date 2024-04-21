@@ -66,7 +66,6 @@ const Detail = () => {
     }
 
     if (error) {
-        console.log(error);
         return <div>Ha ocurrido un error</div>;
     }
 
