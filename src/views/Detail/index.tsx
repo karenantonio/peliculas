@@ -60,7 +60,7 @@ const Detail = () => {
     if (isLoading) {
         return (
             <div className="loading centerContent">
-                Cargando pelicula...
+                Cargando película...
             </div>
         )
     }

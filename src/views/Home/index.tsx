@@ -93,7 +93,7 @@ const Home = () => {
 			<div className="col-12 p-0 m-0">
 				<input 
 					type="text" 
-					placeholder="Buscar una pelicula..." 
+					placeholder="Buscar una película..." 
 					onChange={handleInputChange}
 					onKeyDown={handleInputKeyDown}
 					value={search}
