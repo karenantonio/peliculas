@@ -96,21 +96,19 @@ const Detail = () => {
         <>
         <Navbar />
         <div className={styles.detailContainer} style={{ backgroundImage:`linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(${backdropPath})`, height: '100vh' }}>
-        <Row  xs={12} md={10} className="p-5 m-0 mx-auto">
-            <Col xs={12} md={4}>
+        <Row  xs={12} md={12} xl={12} className="p-5 m-0 mx-auto justify-content-center align-items-center">
+            <Col xs={12} md={6} xl={4}>
                 <img src={`https://image.tmdb.org/t/p/original${movieData?.poster_path}`} alt={movieData?.title} className={styles.posterImage} />
-                
             </Col>
-            <Col xs={12} md={8} className="d-flex flex-column justify-content-center p-0 m-0">
+            <Col xs={12} md={6} xl={8} className="d-flex flex-column justify-content-center p-0 m-0 align-items-center">
                 
                 <div className={styles.movieDetails}>
-                <img
-                    src={isMovieLiked ? HearthFilled : HearthunFilled}
-                    alt="hearth-filled"
-                    className={`hearthImage ${isMovieLiked ? 'likedHeart' : ''}`}
-                    onClick={handleHearthClick}
-                />
-                    
+                    <img
+                        src={isMovieLiked ? HearthFilled : HearthunFilled}
+                        alt="hearth-filled"
+                        className={`hearthImage ${isMovieLiked ? 'likedHeart' : ''}`}
+                        onClick={handleHearthClick}
+                    />
                     <h1 className={styles.movieName}>{movieData?.title}</h1>
                     {movieData?.tagline && <p className={styles.tagline}>{movieData?.tagline}</p>}
                     <p className={styles.infoMovie}>
@@ -136,8 +134,7 @@ const Detail = () => {
                     <div className="d-flex justify-content-end mt-5">
                         <button onClick={() => navigate(-1)}>Volver</button>
                     </div>
-                  
-                    
+
                 </div>
             </Col>
         </Row>
