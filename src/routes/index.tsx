@@ -14,7 +14,6 @@ import MyInfo from '../views/Profile/components/MyInfo'
 import LikedMovies from '../views/Profile/components/LikedMovies'
 
 const router = createBrowserRouter([
-    // * opcion 1
     {
         path: '/',
         element: <Home />,

@@ -1,42 +1,80 @@
-.mainInfoContainer{
+.detailContainer {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
 }
 
-.movieImage{
-    width: 100%;
-    height: 70vh;
-    object-fit: cover;
+.posterImage {
+    width: 300px;
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.movieName{
-    font-size: 24px;
-    margin: 12px 0px;
+.movieDetails {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 800px;
+  display: grid;
+  place-items: center;
+  flex-direction: column;
+  position: relative;
 }
 
-.infoParagraph{
-    text-align: left;
-    margin: 4px 0px;
+.movieName {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.dateParagraph{
-    margin: 4px 0px;
+.tagline {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
-.seatInfoContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 12px;
+.infoParagraph {
+  text-align: left;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
-.pleaseNoteLegend{
-    text-align: left;
-    margin: 10px 0px;
+.scoreLabel {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.priceRangeLegend{
-    text-align: left;
-    margin: 0px 0px;
+.scoreValue {
+  font-size: 16px;
+}
+
+.imdbLink {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.homepageLink {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
 }

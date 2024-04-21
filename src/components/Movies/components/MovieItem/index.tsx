@@ -2,16 +2,18 @@ import styles from './MovieItem.module.css'
 import HearthFilled from '../../../../assets/image/hearth-filled.png'
 import HearthunFilled from '../../../../assets/image/hearth-unfilled.png'
 import useLikeMovies from '../../../../hooks/useLikeMovies'
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import defaultMoviePoster from '../../../../assets/image/default-movie-poster.png';
 
 type Props = {
     id: number
     title: string
-    overview: string
-    poster_path: string
+    poster_path?: string
     onMovieClick: (id: number) => void
 }
 
-const MovieItem = ({ id, title, overview, poster_path, onMovieClick }: Props) => {
+const MovieItem = ({ id, title, poster_path, onMovieClick }: Props) => {
 
     const { isMovieLiked, toggleMovieLiked } = useLikeMovies(id)
 
@@ -24,20 +26,38 @@ const MovieItem = ({ id, title, overview, poster_path, onMovieClick }: Props) =>
         toggleMovieLiked()
     }
 
+    const handleImageError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
+        const target = event.target as HTMLImageElement;
+        target.src = defaultMoviePoster;
+    }
+
+    const moviePoster = poster_path ? poster_path : defaultMoviePoster;
+
     return (
-        <div className={styles.card}>
-            <div className={styles.cardContent}>
-                <div className={styles.imagenContainer}>
-                    <img src={isMovieLiked ? HearthFilled : HearthunFilled} alt="hearth-filled" className={styles.hearthImage} onClick={handleHearthClick} />
-                    <img src={poster_path} alt={title} height={330} width={220} />
-                </div>
-                <div className={styles.movieInfoContainer}>
-                    <h4 className={styles.movieName}>{title}</h4>
-                    <p className={styles.movieInfo}>{overview}</p>
-                    <button onClick={handleSeeMoreClick} className={styles.seeMoreBtn}>Ver más</button>
-                </div>
+        <Col xs={12} md={12} xl={12} className={styles.movieItem}>
+            <Card.Img
+                variant="top"
+                src={moviePoster}
+                onError={handleImageError}
+                alt={title}
+                height={330}
+                width={210}
+            />
+            <img
+                src={isMovieLiked ? HearthFilled : HearthunFilled}
+                alt="hearth-filled"
+                className={`hearthImage ${isMovieLiked ? 'likedHeart' : ''}`}
+                onClick={handleHearthClick}
+            />
+            <div className={styles.movieInfoOverlay}>
+                <p className={styles.movieTitle}>
+                    {title}
+                </p>
+                <button onClick={handleSeeMoreClick} className={styles.seeMoreBtn}>
+                    Ver más
+                </button>
             </div>
-        </div>
+        </Col>
     );
 };
 

@@ -1,32 +1,12 @@
 import { Link } from "react-router-dom";
+import styles from './Navbar.module.css'
 
 const Navbar = () => {
 
     return (
-        <div style={{
-            margin: '0px',
-            backgroundColor: 'gray',
-            // width: '100%',
-            height: '50px',
-            display: 'flex',
-            justifyContent:'space-between',
-            alignItems: 'center',
-            padding: '20px',
-            fontSize: '20px',
-            color: 'white',
-            fontWeight: 'bold'
-        }}>
-            <Link to='/' style={{ 
-                // marginLeft: '10px',
-                color: 'white',
-                textDecoration: 'none'
-            }}>Peliculas</Link>
-            
-            <Link to="/profile/my-info" style={{ 
-                // marginLeft: '10px',
-                color: 'white',
-                textDecoration: 'none'
-            }}>Mi perfil</Link>
+        <div className={styles.containerNavbar}>
+            <Link to='/' className={styles.linkNavbar}>Peliculas</Link>
+            <Link to="/profile/my-info" className={styles.linkNavbar}>Mi perfil</Link>
         </div>
     );
 };

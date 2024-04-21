@@ -1,9 +1,45 @@
 #root {
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;
   text-align: center;
   width: 100%;
-  border: 1px solid orange;
+}
+
+.loading {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.centerContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hearthImage {
+  position: absolute;
+  right: 10px;
+  width: 30px;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+.likedHeart {
+    animation: like-pulse 0.5s ease-in-out infinite alternate;
+}
+  
+@keyframes like-pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
 }
 
 .logo {
@@ -32,12 +68,4 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

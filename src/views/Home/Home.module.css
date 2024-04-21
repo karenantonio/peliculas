@@ -1,37 +1,65 @@
-.pagination{
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.pagination {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  margin: 20px 0px;
+  justify-content: center;
 }
 
-.page{
-    font-size: 20px;
-    padding: 0 8px;
-    cursor: pointer;
-    font-weight: 700;
+.page {
+  font-size: 20px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.page:hover {
+  background-color: #eee;
+}
+
+.activePage {
+  background-color: #032541;
+  color: #fff;
+}
+
+.disabledPage {
+  cursor: not-allowed;
 }
 
 .previous,
-.next{
-    font-size: 20px;
-    cursor: pointer;
+.next {
+  font-size: 20px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  color: #032541;
 }
 
-.previous{
-    margin-right: 8px;
+.previous:hover,
+.next:hover {
+  background-color: #eee;
+  color: #032541;
 }
 
-.next{
-    margin-left: 8px;
+.activePage:hover {
+  background-color: #eee;
+  color: #032541;
 }
 
-.activePage{
-    background-color: #000;
-    color: #fff;
-    border-radius: 5px;
-}
-
-.disabledPage{
-    cursor: not-allowed;
+.searchInput {
+  width: 80%;
+  max-width: 500px;
+  margin: 20px 0px;
+  font-size: 20px;
+  border-radius: 25px;
+  padding: 12px 20px;
+  border: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+  transition: background-color 0.3s ease-in-out;
+  &:focus {
+    background-color: rgba(255, 255, 255, 1);
+  }
 }

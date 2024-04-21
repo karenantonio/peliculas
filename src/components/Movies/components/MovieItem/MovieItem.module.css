@@ -1,35 +1,19 @@
-.card {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    overflow: hidden;
-}
-
-.cardContent {
+.movieItem {
     display: flex;
-}
-
-.imagenContainer {
-    position: relative;
-}
-
-.posterContainer {
-    position: relative;
-}
-
-.posterImage {
-    width: 220px;
+    flex-direction: column;
     height: 330px;
-    object-fit: cover;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    position: relative;
+    padding: 0;
+    margin: 0;
 }
 
-.overlay {
+.movieItem .card-img-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.movieInfoOverlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -37,50 +21,40 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease-in-out;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
+    padding: 15px;
 }
 
-.posterContainer:hover .overlay {
+.movieItem:hover .movieInfoOverlay {
     opacity: 1;
 }
 
-.hearthImage {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 30px;
-}
-
-.movieInfoContainer {
-    padding: 20px;
-    text-align: center;
-    color: #fff;
-}
-
-.movieName {
+.movieTitle {
     margin-top: 0;
     margin-bottom: 10px;
-    font-size: 20px;
     font-weight: bold;
-}
-
-.movieInfo {
-    margin-bottom: 20px;
+    color: #fff;
+    font-size: 18px;
 }
 
 .seeMoreBtn {
-    background-color: #007bff;
+    background-color: #032541;
     color: #fff;
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 10px 15px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 5px;
+    text-align: center;
 }
-
 .seeMoreBtn:hover {
-    background-color: #0056b3;
+    background-color: #FFC107;
+    transform: scale(1.05);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
