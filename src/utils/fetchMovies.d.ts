@@ -1,13 +1,25 @@
 declare module "./fetchMovies" {
     export type MovieData = {
-        // name: string;
-        // images: { url: string }[];
-        // info: string;
-        // dates: { start: { dateTime: string } };
-        // seatmap: { staticUrl: string };
-        // pleaseNote: string;
-        // priceRanges: { min: number; max: number; currency: string }[];
-        // url: string;
+        id: number;
+        title: string;
+        backdrop_path: string;
+        poster_path: string;
+        overview: string;
+        release_date: string;
+        status: string;
+        vote_average: number;
+        vote_count: any;
+        tagline:string
+        popularity: number
+        imdb_id: string
+        homepage: string
+        runtime: number
+        revenue: any
+        genres: {
+            id:number
+            name:string
+        }[]
+        origin_country:string
     };
 
     console.log('data from fetchMovies MovieData');
