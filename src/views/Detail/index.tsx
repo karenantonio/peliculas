@@ -36,11 +36,11 @@ interface MovieData {
 const Detail = () => {
 
     const { movieId } = useParams()
-    const [movieData, setMovieData] = useState<MovieData | null>(null);
-    const [error, setError] = useState<Error | null>(null);
+    const [movieData, setMovieData] = useState<MovieData | null>(null)
+    const [error, setError] = useState<Error | null>(null)
     const [isLoading, setIsLoading] = useState(true)
-    const { isMovieLiked, toggleMovieLiked } = useLikeMovies(Number(movieId));
-    const navigate = useNavigate();
+    const { isMovieLiked, toggleMovieLiked } = useLikeMovies(Number(movieId))
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchMoviesData = async () => {
