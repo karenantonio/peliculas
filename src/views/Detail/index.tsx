@@ -1,7 +1,7 @@
 import { useParams, Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import styles from './Detail.module.css'
-import { format, formatDuration, parse } from 'date-fns'
+import { format } from 'date-fns'
 import { es } from 'date-fns/locale'
 import Navbar from "../../components/Navbar"
 import Col from 'react-bootstrap/Col';
