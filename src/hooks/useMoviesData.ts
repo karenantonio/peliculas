@@ -15,7 +15,7 @@ const useMoviesData = () => {
 
     const fetchMovies = async (params: string | undefined) => {
 
-        console.log('data from fetchMovies useMoviesData');
+        console.log('data from fetchMovies useMoviesData params:', params);
 
         try {
             const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${import.meta.env.VITE_THEMOVIEDB_API_KEY}&language=es-ES&include_adult=false`)
