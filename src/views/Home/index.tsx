@@ -3,7 +3,7 @@ import Navbar from '../../components/Navbar'
 import Movies from '../../components/Movies'
 import ReactPaginate from 'react-paginate'
 import styles from './Home.module.css'
-import useMoviesResults from '../../state/movies-results'
+import useMoviesResults from '../../state/useMoviesResults'
 
 const Home = () => {
 

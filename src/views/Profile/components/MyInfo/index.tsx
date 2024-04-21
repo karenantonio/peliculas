@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import styles from './MyInfo.module.css'
 import Input from '../../../../components/common/Input'
+import useUserData from '../../../../state/useUserData'
 
 const USER_DATA = 'userData'
 
@@ -27,34 +28,47 @@ const MyInfo = () => {
         resolver: yupResolver(schema)
     })
 
+    const { userData, setUserData } = useUserData() as { userData: any; setUserData: (data: any) => void };
+
     useEffect(() => {
-        try {
-            const userData = JSON.parse(localStorage.getItem(USER_DATA) || '[]')
-            setValue('nombre', userData?.nombre)
-            setValue('edad', userData?.edad)
-            setValue('email', userData?.email)
-        } catch (error) {
+
+        if (!userData) {
+          try {
+            const storedUserData = JSON.parse(localStorage.getItem(USER_DATA) || '[]');
+            if (storedUserData) {
+              setUserData(storedUserData);
+            }
+          } catch (error) {
             Swal.fire({
-                title: "Ha ocurrido un error",
-                icon: "error"
+              title: 'Error al cargar datos',
+              icon: 'error',
             });
+          }
         }
-    },[setValue])
+
+        if (userData) {
+          setValue('nombre', userData.nombre);
+          setValue('edad', userData.edad);
+          setValue('email', userData.email);
+        }
+      }, [userData, setValue]);
 
     const handleSubmitForm = (data: any) => {
+
+        setUserData(data);
         try {
-            localStorage.setItem(USER_DATA, JSON.stringify(data))
+            localStorage.setItem(USER_DATA, JSON.stringify(data));
             Swal.fire({
-                title: "Usuario actualizado",
-                icon: "success"
+            title: 'Usuario actualizado',
+            icon: 'success',
             });
         } catch (error) {
             Swal.fire({
-                title: "Ha ocurrido un error",
-                icon: "error"
+            title: 'Error al guardar datos',
+            icon: 'error',
             });
         }
-    }
+    };
 
     return (
         <form onSubmit={handleSubmit(handleSubmitForm)} className={styles.userForm}>
