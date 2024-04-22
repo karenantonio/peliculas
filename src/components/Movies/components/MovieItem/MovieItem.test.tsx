@@ -1,33 +1,19 @@
-
-import { test, expect } from 'vitest'
-import { screen } from '@testing-library/react' // render, fireEvent
-// import userEvent from '@testing-library/user-event';
-// import { yupResolver } from '@hookform/resolvers/yup';
-// import * as yup from 'yup';
+import { test, expect, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
 import MovieItem from './index.tsx';
 
-// jest.mock('../../../../state/useUserData', () => ({
-//   useUserData: () => ({
-//     userData: null,
-//     setUserData: jest.fn(),
-//   }),
-// }));
+const onMovieClick = vi.fn();
 
-test('renders MovieItem form and displays validation errors', async() => {
-	console.log('test MovieItem');
+test('renders movie item with correct data', () => {
+	const id = 1;
+	const title = 'Test Movie';
+	const poster_path = 'poster.jpg';
+  
+	render(<MovieItem id={id} title={title} poster_path={poster_path} onMovieClick={onMovieClick} />);
+  
+	expect(screen.getByText(title));
+	expect(screen.getByRole('img', { name: 'hearth-filled' }));
 
-	// const mockOnMovieClick = jest.fn();
-
-	// render(
-	// 	<MovieItem
-	// 	id={1}
-	// 	title="Test Movie Title"
-	// 	poster_path="https://example.com/poster.jpg"
-	// 	// onMovieClick={mockOnMovieClick}
-	// 	data-testid="movie-item-1"
-	// 	/>
-	// );
 	screen.debug()
-	expect(MovieItem).toBeInstanceOf(Function)
 
-})
+});

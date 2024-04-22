@@ -3,9 +3,9 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
   test: {
     environment: 'happy-dom',
-    // setupFiles: './vitest.config.ts',
-    // coverage: {
-    //   include: ['src/**/*'],
-    // }
+    setupFiles: './vitest.config.ts',
+    coverage: {
+      include: ['src/**/*'],
+    }
   }
 })
