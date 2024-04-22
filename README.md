@@ -8,7 +8,7 @@ Enlace del proyecto:
 
 Documentación
 
-- [Documento de drive](https://docs.google.com/document/d/1i6ymMjg1qid0R20U6QbmeFNJfNjscn65/edit?usp=sharing&ouid=105733648239626200718&rtpof=true&sd=true)
+- [Documento pdf en drive](https://drive.google.com/file/d/1akZsyi1Apqk9Dc8o7npCAq1AmkJ9SUys/view?usp=sharing)
 
 ## Como ejecutarlo en local
 
