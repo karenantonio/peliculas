@@ -10,7 +10,9 @@ import useUserData from '../../../../state/useUserData'
 const USER_DATA = 'userData'
 
 const schema = yup.object().shape({
-    nombre: yup.string().required("Este campo es obligatorio"),
+    nombre: yup.string()
+        .required("Este campo es obligatorio")
+        .min(2, "El nombre debe tener al menos dos caracteres"),
     email: yup.string()
         .required("Este campo es obligatorio")
         .matches(/^\S+@\S+$/, "Debe ingresar un email válido"),
